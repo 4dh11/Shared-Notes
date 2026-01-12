@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Shared Notes</string>
+    <string name="title_activity_main">Shared Notes</string>
+    <string name="package_name">com.adhi.sharednotes</string>
+    <string name="custom_url_scheme">com.adhi.sharednotes</string>
+</resources>

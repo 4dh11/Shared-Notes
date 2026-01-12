@@ -1,0 +1,32 @@
+{
+  "appId": "com.adhi.sharednotes",
+  "appName": "Shared Notes",
+  "webDir": "dist",
+  "server": {
+    "url": "https://shared-notes-frontend.onrender.com",
+    "cleartext": true,
+    "allowNavigation": [
+      "https://shared-notes-backend.onrender.com"
+    ]
+  },
+  "android": {
+    "allowMixedContent": true,
+    "backgroundColor": "#171717"
+  },
+  "plugins": {
+    "StatusBar": {
+      "style": "dark",
+      "backgroundColor": "#171717",
+      "overlay": false
+    },
+    "SplashScreen": {
+      "launchShowDuration": 1000,
+      "backgroundColor": "#171717"
+    },
+    "Keyboard": {
+      "resize": "body",
+      "style": "dark",
+      "resizeOnFullScreen": true
+    }
+  }
+}

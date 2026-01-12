@@ -1,0 +1,280 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mobile-first responsive design */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  /* Prevent zoom on iOS when focusing inputs */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  /* Remove the min-width that might cause issues on small screens */
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Ensure all containers are responsive */
+.container, .main-container {
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Fix for mobile input zoom prevention */
+input, textarea, select {
+  font-size: 16px !important; /* Prevents zoom on iOS */
+  max-width: 100%;
+}
+
+/* SAFE AREA CLASSES FOR STATUS BAR AND NAVIGATION */
+.safe-top {
+  padding-top: env(safe-area-inset-top, 60px) !important;
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 40px) !important;
+}
+
+.safe-left {
+  padding-left: env(safe-area-inset-left, 0px) !important;
+}
+
+.safe-right {
+  padding-right: env(safe-area-inset-right, 0px) !important;
+}
+
+/* Header spacing - applies to main app header */
+.app-header {
+  padding-top: env(safe-area-inset-top, 60px) !important;
+  padding-left: env(safe-area-inset-left, 1rem) !important;
+  padding-right: env(safe-area-inset-right, 1rem) !important;
+}
+
+/* Note editor top toolbar spacing */
+.note-editor-toolbar {
+  padding-top: env(safe-area-inset-top, 60px) !important;
+  padding-left: env(safe-area-inset-left, 1rem) !important;
+  padding-right: env(safe-area-inset-right, 1rem) !important;
+}
+
+/* Note editor bottom toolbar spacing - elevated above nav bar */
+.note-editor-bottom-toolbar {
+  padding-bottom: max(env(safe-area-inset-bottom, 0px), 72px) !important;
+  padding-left: env(safe-area-inset-left, 1rem) !important;
+  padding-right: env(safe-area-inset-right, 1rem) !important;
+}
+
+/* Mobile-specific responsive adjustments */
+@media (max-width: 768px) {
+  /* Ensure modal fits on mobile */
+  .fixed.inset-0 {
+    padding: 0.5rem;
+  }
+  
+  /* Make sure cards display side by side - KEEP 2 columns */
+  .w-\[calc\(50\%-6px\)\] {
+    width: calc(50% - 6px) !important;
+    min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    flex: 0 0 calc(50% - 6px); /* Ensure exactly 2 columns */
+  }
+  
+  /* Force flex container for notes to stay side-by-side */
+  .flex.flex-wrap.gap-3.justify-between {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    gap: 0.5rem !important;
+  }
+  
+  /* Ensure search input is responsive */
+  .w-full {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Fix padding for mobile */
+  .px-4 {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  
+  /* Ensure buttons are touch-friendly */
+  button {
+    min-height: 44px; /* Apple's recommended touch target size */
+  }
+  
+  /* Fix floating action button positioning */
+  .fixed.bottom-4.right-4 {
+    bottom: max(1rem, env(safe-area-inset-bottom, 1rem)) !important;
+    right: max(1rem, env(safe-area-inset-right, 1rem)) !important;
+  }
+}
+
+/* Extra small screens - KEEP 2 columns even on very small screens */
+@media (max-width: 480px) {
+  .px-4 {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  
+  /* IMPORTANT: Keep cards side by side on small screens too */
+  .w-\[calc\(50\%-6px\)\] {
+    width: calc(50% - 4px) !important; /* Slightly smaller gap */
+    margin-bottom: 0.75rem;
+  }
+  
+  .flex.flex-wrap.gap-3.justify-between {
+    gap: 0.25rem !important; /* Smaller gap for very small screens */
+  }
+  
+  /* Adjust safe area for smaller screens */
+  .safe-top {
+    padding-top: env(safe-area-inset-top, 50px) !important;
+  }
+  
+  .app-header {
+    padding-top: env(safe-area-inset-top, 50px) !important;
+  }
+  
+  .note-editor-toolbar {
+    padding-top: env(safe-area-inset-top, 50px) !important;
+  }
+  
+  .settings-header {
+    padding-top: env(safe-area-inset-top, 50px) !important;
+  }
+  
+  .note-editor-bottom-toolbar {
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), 64px) !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Prevent text selection on touch devices for better UX */
+.select-none {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Safe area insets for devices with notches */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+  
+  .fixed.bottom-4.right-4 {
+    bottom: max(1rem, env(safe-area-inset-bottom)) !important;
+    right: max(1rem, env(safe-area-inset-right)) !important;
+  }
+}
+
+/* Better toggle switch styles */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 56px;
+  height: 32px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #9ca3af;
+  transition: 0.3s ease;
+  border-radius: 32px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.3s ease;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background-color: #eab308;
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+  transform: translateX(24px);
+}
+
+/* Home screen content spacing */
+.home-content {
+  padding-left: env(safe-area-inset-left, 1.25rem) !important;
+  padding-right: env(safe-area-inset-right, 1.25rem) !important;
+}
+
+/* Settings page header spacing */
+.settings-header {
+  padding-top: env(safe-area-inset-top, 60px) !important;
+  padding-left: env(safe-area-inset-left, 1rem) !important;
+  padding-right: env(safe-area-inset-right, 1rem) !important;
+}

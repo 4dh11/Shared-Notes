@@ -1,5 +1,3 @@
-Here is the clean, safe, and professional `README.md` for your Monorepo.
-
 # 📝 Shared Notes
 
 **A full-stack, cross-platform note-taking ecosystem featuring a React web client, a native Android mobile app, and a robust Node.js/MongoDB backend.**
